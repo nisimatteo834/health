@@ -1,12 +1,20 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Tue Mar 13 15:05:08 2018
+
+@author: Matteo
+"""
+
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 import random
 from sklearn import tree
+from scipy.cluster.hierarchy import dendrogram,linkage
+import matplotlib
 if __name__=="__main__":
     
     random.seed(1000)
-    np.random.seed(50)
     #feat_names = pd.read_csv("chronic_kidney_disease.arff",nrows=4,header=2)
     feat_names = ['age','bp','sg','al','su','rbc','pc','pcc','ba','bgr','bu','sc','sod','pot','hemo','pcv','wbcc','rbcc','htn','dm','cad','appet','pe','ane','class']
     df=pd.read_csv("chronic_kidney_disease.arff",sep=',',skiprows=29,header=None,na_values=['?','\t?'],names=feat_names)
@@ -25,22 +33,14 @@ if __name__=="__main__":
     df = df.replace('poor',0)
     df = df.replace('present',1)
     df = df.replace('notpresent',0)        
-        
-#%%
     
-# =============================================================================
-# You must first instantiate an object of that class, and then perform the
-# training:
-# clf = tree.DecisionTreeClassifier("entropy")
-# clf = clf.fit(data, target)
-# where data is the original Dataframe without the last column and target
-# is the last column of the original Dataframe
-# =============================================================================
-    data = df.drop(labels='class',axis=1)
-    target = df['class']
+    df2 = df[1:10]
     
-    clf = tree.DecisionTreeClassifier("entropy",max_features=1)
-    clf = clf.fit(data,target)
-    classes = ['ckd','notckd']
-    dot_data = tree.export_graphviz(clf,out_file="Tree.dot",feature_names=feat_names[0:24],class_names=classes,filled=True,rounded=True,special_characters=True)
-#now run on the shell this    dot -Tpng Tree.dot -o Tree.png. Remember to open the shell in the current folder!
+    Z = linkage(df);
+    plt.figure()#(figsize=(20, 10))
+    plt.title('Hierarchical Clustering Dendrogram (truncated)')
+    plt.xlabel('sample index or (cluster size)')
+    plt.ylabel('distance')
+    dendo = dendrogram(Z,truncate_mode='lastp',p=10)#,show_contracted=True);
+    plt.savefig('dendo.png')
+    plt.show()

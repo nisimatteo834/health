@@ -1,3 +1,5 @@
+```python
+```python
 import numpy as np,pandas as pd, matplotlib.pyplot as plt 
 
 if __name__ == '__main__':
@@ -16,6 +18,9 @@ if __name__ == '__main__':
     data_test = data_test.groupby (["subject","test_time"]).mean()
     Npatients = x.loc[:,"subject"].max()
 
+	```python
+	
+	PROVA
 
 #normalizing data
     data_test_1 = pd.Series()
@@ -112,12 +117,12 @@ if __name__ == '__main__':
     
     #STEEPEST DESCENT
     w_hat = np.random.randn(19,)
-    
-    
-        
-        
-    
-      
-    
-        
-    
+```
+
+```
+  File "<ipython-input-1-bd22266dda1a>", line 1
+    ```python
+    ^
+SyntaxError: invalid syntax
+```
+
