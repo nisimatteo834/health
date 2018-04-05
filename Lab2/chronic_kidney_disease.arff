@@ -26,7 +26,7 @@
 @attribute 'ane' {yes,no}
 @attribute 'class' {ckd,notckd}
 
-@data
+@	
 48,80,1.020,1,0,?,normal,notpresent,notpresent,121,36,1.2,?,?,15.4,44,7800,5.2,yes,yes,no,good,no,no,ckd
 7,50,1.020,4,0,?,normal,notpresent,notpresent,?,18,0.8,?,?,11.3,38,6000,?,no,no,no,good,no,no,ckd
 62,80,1.010,2,3,normal,normal,notpresent,notpresent,423,53,1.8,?,?,9.6,31,7500,?,no,yes,no,poor,no,yes,ckd
@@ -396,7 +396,7 @@
 60,80,1.025,0,0,normal,normal,notpresent,notpresent,81,15,0.5,141,3.6,15,46,10500,5.3,no,no,no,good,no,no,notckd
 68,60,1.025,0,0,normal,normal,notpresent,notpresent,125,41,1.1,139,3.8,17.4,50,6700,6.1,no,no,no,good,no,no,notckd
 30,80,1.025,0,0,normal,normal,notpresent,notpresent,82,42,0.7,146,5.0,14.9,45,9400,5.9,no,no,no,good,no,no,notckd
-75,70,1.020,0,0,normal,normal,notpresent,notpresent,107,48,0.8,144,3.5,13.6,46,10300,4.8,no,,no,no,good,no,no,notckd
+75,70,1.020,0,0,normal,normal,notpresent,notpresent,107,48,0.8,144,3.5,13.6,46,10300,4.8,no,no,no,good,no,no,notckd
 69,70,1.020,0,0,normal,normal,notpresent,notpresent,83,42,1.2,139,3.7,16.2,50,9300,5.4,no,no,no,good,no,no,notckd
 28,60,1.025,0,0,normal,normal,notpresent,notpresent,79,50,0.5,145,5.0,17.6,51,6500,5.0,no,no,no,good,no,no,notckd
 72,60,1.020,0,0,normal,normal,notpresent,notpresent,109,26,0.9,150,4.9,15,52,10500,5.5,no,no,no,good,no,no,notckd
