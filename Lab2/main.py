@@ -4,6 +4,7 @@ import pandas as pd
 import random
 import subprocess as sp
 import os
+import graphviz
 from sklearn import tree
 if __name__=="__main__":
        
@@ -46,10 +47,17 @@ if __name__=="__main__":
     clf = clf.fit(data,target)
     classes = ['ckd','notckd']
     dot_data = tree.export_graphviz(clf,out_file="Tree.dot",feature_names=feat_names[0:24],class_names=classes,filled=True,rounded=True,special_characters=True)
-	input_name = "Tree.dot"
-	output_name = "Tree.png"
-	png = sp.run(['dot', '-Tpng', input_name, '-o', output_name], stdout=sp.PIPE)
+    input_name = "Tree.dot"
+    output_name = "Tree.png"
+    png = sp.run(['dot', '-Tpng', input_name, '-o', output_name], stdout=sp.PIPE)
     print(png.stdout.decode('utf-8'))
+    
+    
+    import matplotlib.pyplot as plt
+    import matplotlib.image as mplimg
+    img = mplimg.imread('Tree.png')
+    imgplot = plt.imshow(img)
+    plt.show()
     
 
  
