@@ -2,14 +2,22 @@ import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 import random
+import subprocess as sp
+import os
 from sklearn import tree
 if __name__=="__main__":
     
+    def make_png(input_name, output_name):
+        png = sp.run(['dot', '-Tpng', input_name, '-o', output_name], stdout=sp.PIPE, shell=True)
+        print(png.stdout.decode('utf-8'))
+        
     random.seed(1000)
     np.random.seed(50)
     #feat_names = pd.read_csv("chronic_kidney_disease.arff",nrows=4,header=2)
+    folder = "C:\\Users\\Matteo\\Desktop\\lab_second_year\\Lab2\\"
+    #folder =  os.path.dirname(os.path.realpath(__file__)) + "\\"
     feat_names = ['age','bp','sg','al','su','rbc','pc','pcc','ba','bgr','bu','sc','sod','pot','hemo','pcv','wbcc','rbcc','htn','dm','cad','appet','pe','ane','class']
-    df=pd.read_csv("chronic_kidney_disease.arff",sep=',',skiprows=29,header=None,na_values=['?','\t?'],names=feat_names)
+    df=pd.read_csv(folder+"chronic_kidney_disease.arff",sep=',',skiprows=29,header=None,na_values=['?','\t?'],names=feat_names)
     
     #here i just drop the row having a NaN
     #todo substitution with a number
@@ -38,9 +46,9 @@ if __name__=="__main__":
 # =============================================================================
     data = df.drop(labels='class',axis=1)
     target = df['class']
-    
     clf = tree.DecisionTreeClassifier("entropy",max_features=1)
     clf = clf.fit(data,target)
     classes = ['ckd','notckd']
     dot_data = tree.export_graphviz(clf,out_file="Tree.dot",feature_names=feat_names[0:24],class_names=classes,filled=True,rounded=True,special_characters=True)
+    make_png(folder + 'Tree.dot', folder + 'Tree.png')
 #now run on the shell this    dot -Tpng Tree.dot -o Tree.png. Remember to open the shell in the current folder!

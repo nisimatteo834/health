@@ -6,7 +6,6 @@ Created on Fri Mar 16 10:48:30 2018
 """
 import pandas as pd 
 import numpy
-        
 
 
 df =pd.read_csv("arrhythmia.data",sep=',',skiprows=29,header=None,na_values=['?','\t?',0])
@@ -49,6 +48,11 @@ for patient in list(y.index.values):
         
 pi1 = len(y1)/(len(y))
 pi2 = len(y2)/len(y)
+
+#%%
+
+y_qr = numpy.linalg.qr(y)
+U1,A1 = numpy.linalg.eig()
     
     
     

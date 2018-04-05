@@ -1,4 +1,3 @@
-```python
 import numpy as np,pandas as pd, matplotlib.pyplot as plt 
 
 if __name__ == '__main__':
@@ -17,9 +16,6 @@ if __name__ == '__main__':
     data_test = data_test.groupby (["subject","test_time"]).mean()
     Npatients = x.loc[:,"subject"].max()
 
-	```python
-	
-	PROVA
 
 #normalizing data
     data_test_1 = pd.Series()
