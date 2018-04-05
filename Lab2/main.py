@@ -4,7 +4,6 @@ import pandas as pd
 import random
 import subprocess as sp
 import os
-import graphviz
 from sklearn import tree
 if __name__=="__main__":
        
@@ -49,7 +48,7 @@ if __name__=="__main__":
     dot_data = tree.export_graphviz(clf,out_file="Tree.dot",feature_names=feat_names[0:24],class_names=classes,filled=True,rounded=True,special_characters=True)
     input_name = "Tree.dot"
     output_name = "Tree.png"
-    png = sp.run(['dot', '-Tpng', input_name, '-o', output_name], stdout=sp.PIPE)
+    png = sp.run(['dot', '-Tpng', input_name, '-o', output_name], stdout=sp.PIPE, shell = True)
     print(png.stdout.decode('utf-8'))
     
     
